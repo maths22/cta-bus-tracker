@@ -1,0 +1,23 @@
+paramsync:
+  verbose: false
+  chomp: true
+  delete: true
+  color: true
+
+ssm:
+  kms:
+    region: us-east-2
+    arn: arn:aws:kms:us-east-2:902151335766:key/3c2ea39b-cf33-41fa-997a-1f30d87ddc9b
+
+sync:
+- name: cta-bus-tracker-prod
+  prefix: /cta-bus-tracker/prod/
+  type: file
+  path: prod/cta-bus-tracker.yml
+  region: us-east-2
+
+- name: cta-bus-tracker-dev
+  prefix: /cta-bus-tracker/dev/
+  type: file
+  path: dev/cta-bus-tracker.yml
+  region: us-east-2

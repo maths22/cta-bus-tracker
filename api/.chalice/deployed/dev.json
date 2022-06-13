@@ -1,0 +1,43 @@
+{
+  "resources": [
+    {
+      "name": "managed-layer",
+      "resource_type": "lambda_layer",
+      "layer_version_arn": "arn:aws:lambda:us-east-2:902151335766:layer:cta-bus-tracker-dev-managed-layer:21"
+    },
+    {
+      "name": "refresh",
+      "resource_type": "lambda_function",
+      "lambda_arn": "arn:aws:lambda:us-east-2:902151335766:function:cta-bus-tracker-dev-refresh"
+    },
+    {
+      "name": "refresh-event",
+      "resource_type": "cloudwatch_event",
+      "rule_name": "cta-bus-tracker-dev-refresh-event"
+    },
+    {
+      "name": "process_new_archive",
+      "resource_type": "lambda_function",
+      "lambda_arn": "arn:aws:lambda:us-east-2:902151335766:function:cta-bus-tracker-dev-process_new_archive"
+    },
+    {
+      "name": "process_new_archive-s3event",
+      "resource_type": "s3_event",
+      "bucket": "cta-bus-history-tracker",
+      "lambda_arn": "arn:aws:lambda:us-east-2:902151335766:function:cta-bus-tracker-dev-process_new_archive"
+    },
+    {
+      "name": "api_handler",
+      "resource_type": "lambda_function",
+      "lambda_arn": "arn:aws:lambda:us-east-2:902151335766:function:cta-bus-tracker-dev"
+    },
+    {
+      "name": "rest_api",
+      "resource_type": "rest_api",
+      "rest_api_id": "0a3kmqp905",
+      "rest_api_url": "https://0a3kmqp905.execute-api.us-east-2.amazonaws.com/api/"
+    }
+  ],
+  "schema_version": "2.0",
+  "backend": "api"
+}

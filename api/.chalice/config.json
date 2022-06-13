@@ -1,0 +1,25 @@
+{
+  "version": "2.0",
+  "app_name": "cta-bus-tracker",
+  "stages": {
+    "dev": {
+      "automatic_layer": true,
+      "api_gateway_stage": "api",
+      "manage_iam_role": false,
+      "iam_role_arn": "arn:aws:iam::902151335766:role/cta-bus-tracker-prod",
+      "environment_variables": {
+        "ENVIRONMENT": "prod"
+      },
+      "lambda_functions_disabled": {
+        "api_handler": {
+          "subnet_ids": ["subnet-8851eae0", "subnet-70e9c13d", "subnet-43946639"],
+          "security_group_ids": ["sg-a724b4cc"]
+        },
+        "process_new_archive": {
+          "subnet_ids": ["subnet-8851eae0", "subnet-70e9c13d", "subnet-43946639"],
+          "security_group_ids": ["sg-a724b4cc"]
+        }
+      }
+    }
+  }
+}

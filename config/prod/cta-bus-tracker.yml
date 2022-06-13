@@ -1,0 +1,15 @@
+archive_table_name: bus-tracker-app-3b2943d2-3870-4c3d-8991-1e8144f14770
+
+cta:
+  api_key: !binary |-
+    AQICAHgT0GwMDmKWkKzqzeDFJyudmyTVWtw4mEML4BvZ39II5QGG9+LghXcZ3/TevRjjwmn/AAAAdzB1BgkqhkiG9w0BBwagaDBmAgEAMGEGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMhX1RxNCXA9GhLWHCAgEQgDRKUmkgZs1vlmOvvdQur1FH/eaBDRFVTZxtKXBuM6HYWBya4VCXbX0R2oTNiMChleMuE2L0
+
+db:
+  username: cta_bus_tracker
+  password: !binary |-
+    AQICAHgT0GwMDmKWkKzqzeDFJyudmyTVWtw4mEML4BvZ39II5QFPNYqS31ZK5cWBNO0xEexwAAAAbDBqBgkqhkiG9w0BBwagXTBbAgEAMFYGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMoxFJ6yR3mrhy7Rs2AgEQgCk5XoSSe+d/AhHZ7O9MTA+KjURkKjiu+s2xlROr0Ml0/bHpMzVKzqBejw==
+  host: maths22-db-1.cjv0sh2ufcvu.us-east-2.rds.amazonaws.com
+  database: cta_bus_tracker
+
+s3:
+  bucket_name: cta-bus-history-tracker
