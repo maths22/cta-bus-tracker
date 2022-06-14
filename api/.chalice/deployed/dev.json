@@ -3,7 +3,7 @@
     {
       "name": "managed-layer",
       "resource_type": "lambda_layer",
-      "layer_version_arn": "arn:aws:lambda:us-east-2:902151335766:layer:cta-bus-tracker-dev-managed-layer:21"
+      "layer_version_arn": "arn:aws:lambda:us-east-2:902151335766:layer:cta-bus-tracker-dev-managed-layer:23"
     },
     {
       "name": "refresh",

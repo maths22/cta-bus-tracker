@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/iframeResizer.min.js"></script>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script>
+        async function onDateSelectFunction(dateText) {
+            var key = new Date(dateText).toISOString().substring(0, 10).replaceAll("-", "/");
+            var mySelect = $( "#times");
+            var notFound = $("#notFound");
+            $(".removable-time").remove();
+            const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            const raw = await fetch(`https://0a3kmqp905.execute-api.us-east-2.amazonaws.com/api/available/${key}?timezone=${encodeURIComponent(timezone)}`);
+            if(raw.ok) {
+                mySelect.show();
+                notFound.hide();
+                const res = await raw.json();
+                for (const time in res) {
+                    mySelect.append(
+                        $('<option></option>').val(res[time]).html(new Date(time * 1000).toLocaleTimeString(undefined, { hour: 'numeric', minute: 'numeric' })).addClass("removable-time")
+                    );
+                }
+            } else {
+                mySelect.hide();
+                notFound.show();
+            }
+        }
+        $(function() {
+            $( "#dates" ).datepicker({
+                // beforeShowDay: isAvailableDate,
+                onSelect: onDateSelectFunction,
+                maxDate: new Date()
+            });
+            $("#times").change(function() {
+                $("#dataframe").attr('src', '/' + this.value);
+            });
+            $("#dataframe").iFrameResize({'checkOrigin': false});
+            onDateSelectFunction(new Date().toISOString());
+        });
+        </script>
+        <style>
+        .ui-widget { font-size: 12px; }
+        #dataframe {
+           width: 100%;
+           border: 0;
+           min-height: 50vh;
+        }
+        </style>
+        <title>CTA Bus Tracker Archive</title>
+    </head>
+    <body>
+
+
+<div class="container">
+<h3>CTA Bus Tracker Archive</h3>
+<div class="row">
+<form class="form-horizontal col col-md-3">
+<div class="form-group">
+  <label>Day: </label>
+  <div id="dates"></div>
+</div>
+<div class="form-group">
+  <label for="times">Time: </label>
+  <span id="notFound" style="display: none;">No history available for this date</span>
+  <select id="times">
+    <option value="about:blank">- Select a time -</option>
+  </select>
+</div>
+</form>
+<div class="col col-md-9">
+<div class="card">
+<div class="card-body">
+<iframe id="dataframe"> </iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+<br/>
+
+</body>
+</html>
