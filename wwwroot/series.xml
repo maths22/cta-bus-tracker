@@ -1,10 +1,10 @@
 <series>
-<series no="7900" end="8449" name="Nova Bus LFS"/>
+<series no="7900" end="8449" name="Nova Bus LFS (7900-8349)"/>
+<series no="8350" end="8449" name="Nova Bus LFS (8350-)"/>
 <series no="700" end="701" name="New Flyer XE40"/>
 <series no="4300" end="4399" name="New Flyer DE/D60LFR"/>
 <series no="4000" end="4207" name="New Flyer DE60LF"/>
 <series no="1000" end="2029" name="New Flyer D40LF"/>
-<series no="800" end="809" name="New Flyer DE40LF"/>
 <series no="6400" end="6883" name="Nova Bus LFS"/>
 <series no="600" end="624" name="Proterra BE40"/>
 </series>
